@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Code, Inter } from "next/font/google";
 import "./globals.css";
+import RevealManager from "@/components/RevealManager";
 
 const fira = Fira_Code({ subsets: ["latin"], variable: "--font-fira" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -25,7 +26,10 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <RevealManager />
+        {children}
+      </body>
     </html>
   );
 }
