@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import GithubRepos from "@/components/GithubRepos";
 
 export default function Home() {
   return (
@@ -77,6 +78,8 @@ export default function Home() {
             <h2>Projetos</h2>
             <p>Alguns dos meus trabalhos em produção.</p>
           </div>
+
+          {/* Projetos em destaque (manuais) */}
           <div className="cards">
             <article className="card reveal">
               <div className="lang"><span className="sq" />PHP · CodeIgniter</div>
@@ -107,12 +110,10 @@ export default function Home() {
               </div>
             </article>
           </div>
-          <div className="gh-note reveal" style={{ marginTop: "18px" }}>
-            <span className="green">$ github.fetch(</span>
-            <span className="mono">&apos;Frgomes2&apos;</span>
-            <span className="green">)</span> — em breve, seus repositórios públicos aparecem
-            aqui automaticamente. <span style={{ color: "var(--fg-faint)" }}>(fase 2)</span>
-          </div>
+
+          {/* Repositórios do GitHub (automático) */}
+          <p className="gh-sub reveal">// direto do github · @Frgomes2</p>
+          <GithubRepos limit={6} />
         </div>
       </section>
 

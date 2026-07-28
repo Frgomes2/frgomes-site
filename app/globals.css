@@ -149,8 +149,11 @@ footer { border-top: 1px solid var(--line); padding: 30px 0; }
 .foot-inner .social a { color: var(--fg-faint); font-size: 16px; text-decoration: none; transition: color .2s; }
 .foot-inner .social a:hover { color: var(--green); }
 
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+/* Conteúdo visível por padrão. Só esconde/anima quando o JS marca `reveal-ready`
+   no <html> — assim, sem JS (ou pra buscadores), tudo aparece normalmente. */
+html.reveal-ready .reveal { opacity: 0; transform: translateY(16px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease); }
+html.reveal-ready .reveal.in { opacity: 1; transform: none; }
 
 @media (max-width: 860px) {
   .nav-links { display: none; }
@@ -162,5 +165,13 @@ footer { border-top: 1px solid var(--line); padding: 30px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .cl { opacity: 1; transform: none; animation: none; transition: none; }
+  html.reveal-ready .reveal, .reveal, .cl { opacity: 1; transform: none; animation: none; transition: none; }
 }
+
+/* Links dentro dos cards de repositório (Fase 2) */
+.repo-links { margin-top: 14px; display: flex; gap: 16px; }
+.repo-links a { font-family: var(--font-fira), monospace; font-size: 12px; color: var(--green);
+  text-decoration: none; transition: color .2s; }
+.repo-links a:hover { color: var(--green-bright); }
+.gh-sub { font-family: var(--font-fira), monospace; font-size: 13px; color: var(--fg-faint);
+  margin: 28px 0 14px; }
