@@ -1,7 +1,5 @@
 import type { Repo } from "@/lib/github";
 
-// Mapa simples: linguagem -> classe de ícone colorido (Devicon).
-// Se a linguagem não estiver aqui, cai num ícone genérico.
 const LANG_ICON: Record<string, string> = {
   JavaScript: "devicon-javascript-plain colored",
   TypeScript: "devicon-typescript-plain colored",
@@ -12,45 +10,28 @@ const LANG_ICON: Record<string, string> = {
   Ruby: "devicon-ruby-plain colored",
   Shell: "devicon-bash-plain colored",
   Java: "devicon-java-plain colored",
-  "C#": "devicon-csharp-plain colored",
   Vue: "devicon-vuejs-plain colored",
   Go: "devicon-go-original-wordmark colored",
 };
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
+function fmt(iso: string) {
+  return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
 }
 
 export default function RepoCard({ repo }: { repo: Repo }) {
   const icon = repo.language ? LANG_ICON[repo.language] : null;
-
   return (
-    <article className="card reveal">
-      <div className="lang">
-        {icon ? <i className={icon} /> : <span className="sq" />}
-        {repo.language ?? "Repositório"}
+    <a className="repo" href={repo.html_url} target="_blank" rel="noopener noreferrer">
+      <div className="repo-h">
+        {icon ? <i className={icon} /> : <span className="dot" style={{ background: "var(--fg3)" }} />}
+        <strong>{repo.name}</strong>
+        <span className="repo-star">★ {repo.stargazers_count}</span>
       </div>
-      <h3>{repo.name}</h3>
       <p>{repo.description ?? "Sem descrição."}</p>
-      <div className="tech">
-        <span>★ {repo.stargazers_count}</span>
-        <span>⑂ {repo.forks_count}</span>
-        <span>{formatDate(repo.updated_at)}</span>
+      <div className="repo-f">
+        <span>{repo.language ?? "—"}</span>
+        <span>atualizado em {fmt(repo.updated_at)}</span>
       </div>
-      <div className="repo-links">
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-          Ver no GitHub →
-        </a>
-        {repo.homepage ? (
-          <a href={repo.homepage} target="_blank" rel="noopener noreferrer">
-            Demo ↗
-          </a>
-        ) : null}
-      </div>
-    </article>
+    </a>
   );
 }
