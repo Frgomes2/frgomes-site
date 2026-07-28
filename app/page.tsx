@@ -1,65 +1,168 @@
-import Image from "next/image";
+import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Nav />
+      <Hero />
+
+      {/* SOBRE */}
+      <section className="block" id="sobre">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">// sobre</span>
+            <h2>Quem sou</h2>
+          </div>
+          <div className="about-grid">
+            <div className="reveal">
+              <p>
+                Desenvolvedor full-stack apaixonado por transformar ideias em realidade
+                digital. Trabalho o ciclo completo — modelagem de dados, back-end,
+                interface e deploy.
+              </p>
+              <p>
+                Hoje meu terreno é PHP/CodeIgniter, Python e PostgreSQL, com projetos
+                rodando em produção. Estou construindo este site como projeto de
+                aprendizado profundo do stack moderno: Next.js, React e TypeScript.
+              </p>
+            </div>
+            <div className="reveal">
+              <div className="skillcat">
+                <h4>frontend</h4>
+                <div className="chips">
+                  <span className="chip"><i className="devicon-html5-plain colored" />HTML</span>
+                  <span className="chip"><i className="devicon-css3-plain colored" />CSS</span>
+                  <span className="chip"><i className="devicon-javascript-plain colored" />JavaScript</span>
+                  <span className="chip"><i className="devicon-jquery-plain colored" />jQuery</span>
+                  <span className="chip"><i className="devicon-bootstrap-plain colored" />Bootstrap</span>
+                </div>
+              </div>
+              <div className="skillcat">
+                <h4>backend</h4>
+                <div className="chips">
+                  <span className="chip"><i className="devicon-php-plain colored" />PHP</span>
+                  <span className="chip"><i className="devicon-codeigniter-plain colored" />CodeIgniter</span>
+                  <span className="chip"><i className="devicon-rails-plain colored" />Ruby on Rails</span>
+                  <span className="chip"><i className="devicon-python-plain colored" />Python</span>
+                </div>
+              </div>
+              <div className="skillcat">
+                <h4>dados &amp; tools</h4>
+                <div className="chips">
+                  <span className="chip"><i className="devicon-mysql-plain colored" />MySQL</span>
+                  <span className="chip"><i className="devicon-postgresql-plain colored" />PostgreSQL</span>
+                  <span className="chip"><i className="devicon-git-plain colored" />Git</span>
+                </div>
+              </div>
+              <div className="skillcat">
+                <h4>aprendendo</h4>
+                <div className="chips">
+                  <span className="chip learn"><i className="devicon-nextjs-plain" />Next.js</span>
+                  <span className="chip learn"><i className="devicon-react-original colored" />React</span>
+                  <span className="chip learn"><i className="devicon-typescript-plain colored" />TypeScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* PORTFÓLIO */}
+      <section className="block" id="portfolio">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">// portfólio</span>
+            <h2>Projetos</h2>
+            <p>Alguns dos meus trabalhos em produção.</p>
+          </div>
+          <div className="cards">
+            <article className="card reveal">
+              <div className="lang"><span className="sq" />PHP · CodeIgniter</div>
+              <h3>Plataforma de RPG</h3>
+              <p>
+                Hub completo para criar e jogar mesas de RPG online: campanhas, fichas
+                visuais, rolagem de dados e inventário em tempo real, com painel do mestre.
+              </p>
+              <div className="tech">
+                <span><i className="devicon-php-plain colored" />PHP</span>
+                <span><i className="devicon-codeigniter-plain colored" />CodeIgniter</span>
+                <span><i className="devicon-railway-plain" />Railway</span>
+                <span><i className="devicon-postgresql-plain colored" />Postgres</span>
+              </div>
+            </article>
+            <article className="card reveal">
+              <div className="lang"><span className="sq" />PHP · CodeIgniter</div>
+              <h3>SI — Sistema Integrado</h3>
+              <p>
+                Painel admin com controle da plataforma: usuários e papéis, CRUD de
+                conteúdo, relatórios e logs de auditoria. Filtros avançados e ações em massa.
+              </p>
+              <div className="tech">
+                <span><i className="devicon-php-plain colored" />PHP</span>
+                <span><i className="devicon-codeigniter-plain colored" />CodeIgniter</span>
+                <span><i className="devicon-railway-plain" />Railway</span>
+                <span><i className="devicon-postgresql-plain colored" />Postgres</span>
+              </div>
+            </article>
+          </div>
+          <div className="gh-note reveal" style={{ marginTop: "18px" }}>
+            <span className="green">$ github.fetch(</span>
+            <span className="mono">&apos;Frgomes2&apos;</span>
+            <span className="green">)</span> — em breve, seus repositórios públicos aparecem
+            aqui automaticamente. <span style={{ color: "var(--fg-faint)" }}>(fase 2)</span>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* SERVIÇOS */}
+      <section className="block" id="servicos">
+        <div className="wrap">
+          <div className="sec-head reveal">
+            <span className="eyebrow">// serviços</span>
+            <h2>Como posso ajudar</h2>
+          </div>
+          <div className="svc">
+            <div className="item reveal">
+              <div className="num">01</div>
+              <h3>Desenvolvimento web</h3>
+              <p>Sites e sistemas completos, do back-end à interface.</p>
+            </div>
+            <div className="item reveal">
+              <div className="num">02</div>
+              <h3>APIs &amp; bancos de dados</h3>
+              <p>Integrações, modelagem e serviços escaláveis.</p>
+            </div>
+            <div className="item reveal">
+              <div className="num">03</div>
+              <h3>Consultoria técnica</h3>
+              <p>Arquitetura, revisão de código e boas práticas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section className="block" id="contato">
+        <div className="wrap">
+          <div className="contact-card reveal">
+            <span className="eyebrow">// contato</span>
+            <h2>Vamos construir algo?</h2>
+            <p>Disponível para novos projetos e colaborações.</p>
+            <a href="mailto:flavio.raphael@msn.com" className="btn btn-primary">
+              Enviar mensagem
+            </a>
+            <div className="contact-details">
+              <a href="mailto:flavio.raphael@msn.com">flavio.raphael@msn.com</a>
+              <a href="tel:+5545998242585">+55 (45) 99824-2585</a>
+              <a href="#">Cascavel, PR</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }
