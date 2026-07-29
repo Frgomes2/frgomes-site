@@ -44,3 +44,36 @@
 .admin-card h3 { font-family: var(--font-cond), var(--font-sans), sans-serif; font-size: 18px; margin-bottom: 6px; }
 .admin-card p { color: var(--fg2); font-size: 13px; }
 .admin-card span { color: var(--fg3); }
+
+/* ---------- Fase 4: formulários do admin ---------- */
+.admin-back { display: inline-block; margin-bottom: 20px; color: var(--fg2);
+  text-decoration: none; font-family: var(--font-mono), monospace; font-size: 12px; transition: color .2s; }
+.admin-back:hover { color: var(--acc); }
+
+.admin-ok { background: var(--acc-dim); border: 1px solid var(--acc); color: var(--acc);
+  border-radius: 8px; padding: 10px 14px; font-size: 13px; margin-bottom: 20px;
+  font-family: var(--font-mono), monospace; }
+
+.admin-form { display: flex; flex-direction: column; gap: 20px; max-width: 620px; }
+.admin-form label { display: flex; flex-direction: column; gap: 7px;
+  font-family: var(--font-mono), monospace; font-size: 12px; color: var(--fg2); }
+.admin-form input,
+.admin-form textarea {
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px;
+  color: var(--fg); font-family: var(--font-sans), sans-serif; font-size: 14px;
+  transition: border-color .2s; resize: vertical;
+}
+.admin-form input:focus,
+.admin-form textarea:focus { outline: none; border-color: var(--acc); }
+.admin-form small { color: var(--fg3); font-size: 11px; font-family: var(--font-sans), sans-serif; }
+.admin-form button {
+  align-self: flex-start; background: var(--acc); color: #04120C; border: none; border-radius: 8px;
+  padding: 11px 24px; font-family: var(--font-mono), monospace; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: filter .2s;
+}
+.admin-form button:hover { filter: brightness(1.08); }
+
+/* cards do dashboard que viraram links */
+.admin-card.is-link { text-decoration: none; color: inherit; display: block;
+  transition: border-color .2s, transform .2s; }
+.admin-card.is-link:hover { border-color: var(--acc); transform: translateY(-2px); }

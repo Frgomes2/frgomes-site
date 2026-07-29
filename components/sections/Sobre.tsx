@@ -1,3 +1,5 @@
+import { getSobre } from "@/lib/db-content";
+
 const DEPS = [
   { icon: "devicon-php-plain colored", name: "php", v: "^8.0" },
   { icon: "devicon-codeigniter-plain colored", name: "codeigniter", v: "^4.0" },
@@ -16,22 +18,25 @@ const DEV_DEPS = [
   { icon: "devicon-tailwindcss-original colored", name: "tailwindcss", v: "^4.0" },
 ];
 
-export default function Sobre() {
+// Texto padrão, usado enquanto o admin não editar o conteúdo pelo painel.
+const PADRAO = `Trabalho o ciclo completo de um produto: modelagem de dados, regra de negócio, interface e deploy. Não gosto de entregar tela bonita com banco mal pensado — pra mim as duas pontas contam.
+
+Meu terreno hoje é PHP com CodeIgniter, Python e PostgreSQL, com sistemas rodando em produção — incluindo uma plataforma de RPG com estado sincronizado em tempo real.`;
+
+export default async function Sobre() {
+  const registro = await getSobre();
+  const texto = registro?.conteudo?.trim() || PADRAO;
+  // separa em parágrafos por linha em branco
+  const paragrafos = texto.split(/\n\s*\n/).filter((p) => p.trim());
+
   return (
     <section id="sobre">
       <div className="cmt"># sobre.md</div>
       <h2 className="rv">Quem sou</h2>
       <div className="md rv">
-        <p>
-          Trabalho o ciclo completo de um produto:{" "}
-          <b>modelagem de dados, regra de negócio, interface e deploy</b>. Não gosto
-          de entregar tela bonita com banco mal pensado — pra mim as duas pontas contam.
-        </p>
-        <p>
-          Meu terreno hoje é PHP com CodeIgniter, Python e PostgreSQL, com sistemas
-          rodando em produção — incluindo uma plataforma de RPG com estado
-          sincronizado em tempo real.
-        </p>
+        {paragrafos.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
 
         <div className="h"><span>##</span> agora</div>
         <p>

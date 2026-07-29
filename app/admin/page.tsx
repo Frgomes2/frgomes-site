@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { auth, signOut } from "@/auth";
 
 export const metadata = { title: "Dashboard — Admin" };
@@ -27,10 +28,22 @@ export default async function AdminDashboard() {
       </p>
 
       <div className="admin-grid">
-        <div className="admin-card"><h3>Perfil</h3><p>Nome, bio, foto e capa. <span>(fase 4)</span></p></div>
-        <div className="admin-card"><h3>Sobre</h3><p>Editar o conteúdo da aba. <span>(fase 4)</span></p></div>
-        <div className="admin-card"><h3>Competências</h3><p>CRUD de skills. <span>(fase 5)</span></p></div>
-        <div className="admin-card"><h3>Projetos</h3><p>Manuais + destaque de repos. <span>(fase 5)</span></p></div>
+        <Link href="/admin/perfil" className="admin-card is-link">
+          <h3>Perfil →</h3>
+          <p>Cargo, bio, foto e capa.</p>
+        </Link>
+        <Link href="/admin/sobre" className="admin-card is-link">
+          <h3>Sobre →</h3>
+          <p>Editar o conteúdo da aba.</p>
+        </Link>
+        <div className="admin-card">
+          <h3>Competências</h3>
+          <p>CRUD de skills. <span>(fase 5)</span></p>
+        </div>
+        <div className="admin-card">
+          <h3>Projetos</h3>
+          <p>Manuais + destaque de repos. <span>(fase 5)</span></p>
+        </div>
       </div>
     </div>
   );
