@@ -1,0 +1,46 @@
+/* Estilos da área administrativa — herdam as variáveis do globals.css */
+.admin-root { min-height: 100vh; background: var(--bg); color: var(--fg);
+  font-family: var(--font-sans), sans-serif; }
+
+/* login */
+.login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login-card {
+  width: 100%; max-width: 380px; background: var(--panel2); border: 1px solid var(--rule);
+  border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 14px;
+}
+.login-head { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono), monospace;
+  font-size: 12px; color: var(--fg3); margin-bottom: 6px; }
+.login-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acc); }
+.login-card h1 { font-family: var(--font-cond), var(--font-sans), sans-serif; font-size: 26px; font-weight: 600; }
+.login-sub { color: var(--fg2); font-size: 14px; margin-bottom: 6px; }
+.login-card label { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono), monospace;
+  font-size: 12px; color: var(--fg2); }
+.login-card input {
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 11px 13px;
+  color: var(--fg); font-family: var(--font-sans), sans-serif; font-size: 14px; transition: border-color .2s;
+}
+.login-card input:focus { outline: none; border-color: var(--acc); }
+.login-card button {
+  margin-top: 8px; background: var(--acc); color: #04120C; border: none; border-radius: 8px;
+  padding: 12px; font-family: var(--font-mono), monospace; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: filter .2s;
+}
+.login-card button:hover { filter: brightness(1.08); }
+.login-err { background: rgba(247,140,108,.12); border: 1px solid rgba(247,140,108,.4);
+  color: var(--sx-num); border-radius: 8px; padding: 10px 12px; font-size: 13px; }
+
+/* dashboard */
+.admin-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+.admin-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
+.admin-eyebrow { font-family: var(--font-mono), monospace; font-size: 12px; color: var(--acc); }
+.admin-top h1 { font-family: var(--font-cond), var(--font-sans), sans-serif; font-size: 34px; font-weight: 700; }
+.admin-out { background: transparent; border: 1px solid var(--rule); color: var(--fg2); cursor: pointer;
+  font-family: var(--font-mono), monospace; font-size: 12px; padding: 8px 16px; border-radius: 8px; transition: all .2s; }
+.admin-out:hover { border-color: var(--sx-num); color: var(--sx-num); }
+.admin-hello { color: var(--fg2); font-size: 15px; margin-bottom: 32px; }
+.admin-hello b { color: var(--fg); }
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.admin-card { background: var(--panel2); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; }
+.admin-card h3 { font-family: var(--font-cond), var(--font-sans), sans-serif; font-size: 18px; margin-bottom: 6px; }
+.admin-card p { color: var(--fg2); font-size: 13px; }
+.admin-card span { color: var(--fg3); }

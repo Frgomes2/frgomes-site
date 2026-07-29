@@ -1,8 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Prisma schema — frgomes.com.br
+// Models em PascalCase; tabelas no banco em snake_case via @@map/@map.
 
 generator client {
   provider = "prisma-client"
@@ -12,4 +9,92 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+// Administrador(es) do painel
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  senhaHash String   @map("senha_hash")
+  nome      String
+  criadoEm  DateTime @default(now()) @map("criado_em")
+
+  @@map("usuarios")
+}
+
+// Configurações gerais do site (linha única)
+model ConfigSite {
+  id             Int      @id @default(autoincrement())
+  githubUsername String?  @map("github_username")
+  titulo         String?
+  descricao      String?
+  fotoUrl        String?  @map("foto_url")
+  capaUrl        String?  @map("capa_url")
+  atualizadoEm   DateTime @default(now()) @updatedAt @map("atualizado_em")
+
+  @@map("config_site")
+}
+
+// Conteúdo da aba "Sobre"
+model Sobre {
+  id           Int      @id @default(autoincrement())
+  conteudo     String
+  atualizadoEm DateTime @default(now()) @updatedAt @map("atualizado_em")
+
+  @@map("sobre")
+}
+
+// Competências / skills
+model Competencia {
+  id        Int     @id @default(autoincrement())
+  nome      String
+  categoria String
+  nivel     String?
+  ordem     Int     @default(0)
+
+  @@map("competencias")
+}
+
+// Projetos manuais (fora do GitHub)
+model ProjetoManual {
+  id        Int     @id @default(autoincrement())
+  titulo    String
+  descricao String?
+  url       String?
+  imagemUrl String? @map("imagem_url")
+  destaque  Boolean @default(false)
+  ordem     Int     @default(0)
+
+  @@map("projetos_manuais")
+}
+
+// Overrides sobre os repositórios vindos do GitHub
+model GithubRepoConfig {
+  id              Int     @id @default(autoincrement())
+  repoNome        String  @unique @map("repo_nome")
+  destaque        Boolean @default(false)
+  oculto          Boolean @default(false)
+  descricaoCustom String? @map("descricao_custom")
+
+  @@map("github_repos_config")
+}
+
+// Redes sociais
+model LinkSocial {
+  id         Int    @id @default(autoincrement())
+  plataforma String
+  url        String
+  ordem      Int    @default(0)
+
+  @@map("links_sociais")
+}
+
+// Dados de contato
+model ConfigContato {
+  id             Int     @id @default(autoincrement())
+  email          String?
+  whatsapp       String?
+  mensagemPadrao String? @map("mensagem_padrao")
+
+  @@map("config_contato")
 }

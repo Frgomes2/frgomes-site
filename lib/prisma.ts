@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+// Cliente Prisma reutilizável (singleton).
+// Nesta versão, o client é gerado em lib/generated/prisma e o ponto
+// de entrada é o arquivo "client", por isso o import termina em /client.
+import { PrismaClient } from "./generated/prisma/client";
 
-// Cliente Prisma reutilizável (padrão singleton).
-// Em desenvolvimento, o Next.js recarrega o código a cada mudança;
-// sem isso, abriríamos conexões demais com o banco.
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
